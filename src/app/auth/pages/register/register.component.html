@@ -1,0 +1,60 @@
+<main class="form-signin">
+    <form [formGroup]="registerForm" (ngSubmit)="clickRegistrarme()">
+      
+      <h1 class="h3 mb-3 fw-normal text-center">¡Comencemos el registro!</h1>
+  
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="nameCtrl">
+        <label for="floatingInput">Nombre</label>
+        <div class="errors">
+          <small class="invalid" *ngIf="getNameCtrl()?.errors?.required && getNameCtrl()?.touched">Campo obligatorio</small>
+          <small class="invalid" *ngIf="getNameCtrl()?.errors?.minlength && getNameCtrl()?.touched">Mínimo 4 caracteres</small>
+        </div>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="emailCtrl">
+        <label for="floatingInput">Email</label>
+        <div class="errors">
+          <small class="invalid" *ngIf="getEmailCtrl()?.errors?.required && getEmailCtrl()?.touched">Campo obligatorio</small>
+          <small class="invalid" *ngIf="getEmailCtrl()?.errors?.email && getEmailCtrl()?.touched">Formato incorrecto</small>
+        </div>
+        
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="passCtrl1">
+        <label for="floatingPassword">Contraseña</label>
+      </div>
+      <div class="errors">
+        <small class="invalid" *ngIf="getPassCtrl1()?.errors?.required && getPassCtrl1()?.touched">Campo obligatorio</small>
+        <small class="invalid" *ngIf="getPassCtrl1()?.errors?.minlength && getPassCtrl1()?.touched">Mínimo 6 caracteres</small>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="passCtrl2">
+        <label for="floatingPassword">Repita la contraseña</label>
+      </div>
+      <div class="errors">
+        <small class="invalid" *ngIf="getPassCtrl2()?.errors?.required && getPassCtrl2()?.touched">Campo obligatorio</small>
+        <small class="invalid" *ngIf="getPassCtrl2()?.errors?.minlength && getPassCtrl2()?.touched">Mínimo 6 caracteres</small>
+        <small class="invalid" *ngIf="getPassCtrl2()?.errors?.diferentPass && getPassCtrl2()?.touched">La contraseña debe ser la misma</small>
+      </div>
+      <div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="registerForm.invalid || showSpinner">Registrarme</button>
+      </div>
+      <br>
+      <small class=""><a [routerLink]="" (click)="goToLogin()">¿Ya tenés cuenta?</a></small>
+
+      <br>
+      <div class="text-center" *ngIf="showSpinner">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden"></span>
+        </div>
+      </div>
+
+      <div class="alert alert-danger small" role="alert"  *ngIf="hasAlert" >
+        {{alertMessage}}
+      </div>
+      
+      <p class="mt-5 mb-3 text-muted text-center">© FM 4°B 2021</p>
+    </form>
+</main>
+

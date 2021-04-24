@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "tp-saladejuegos-d8a5e": {
+      "hosting": {
+        "sala-juegos-v2": [
+          "tp-saladejuegos-d8a5e"
+        ]
+      }
+    }
+  }
+}

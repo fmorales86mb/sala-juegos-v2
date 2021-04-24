@@ -120,6 +120,10 @@
               "devServerTarget": "sala-juegos-v2:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
