@@ -9,12 +9,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
 
   public loginForm: FormGroup;
+  public titleGame:string;
 
   constructor(private fb:FormBuilder) {
-    this.loginForm = this.fb.group({
-      email:['', [Validators.required, Validators.email]],
-      pass:['', [Validators.required, Validators.minLength(6)]]
-    });
+    this.titleGame = "Ta-Te-Ti";
    }
 
   clickIngresar(){
