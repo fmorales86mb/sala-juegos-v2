@@ -35,7 +35,7 @@
       <div class="errors">
         <small class="invalid" *ngIf="getPassCtrl2()?.errors?.required && getPassCtrl2()?.touched">Campo obligatorio</small>
         <small class="invalid" *ngIf="getPassCtrl2()?.errors?.minlength && getPassCtrl2()?.touched">Mínimo 6 caracteres</small>
-        <small class="invalid" *ngIf="getPassCtrl2()?.errors?.diferentPass && getPassCtrl2()?.touched">La contraseña debe ser la misma</small>
+        <small class="invalid" *ngIf="getPassCtrl2()?.errors?.mustMatch && getPassCtrl2()?.touched">La contraseña debe ser la misma</small>
       </div>
       <div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="registerForm.invalid || showSpinner">Registrarme</button>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegisterCredential } from '../../models/register-credential';
+import { ResponseFirebase } from '../../models/response-firebase';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,14 +17,40 @@ export class RegisterComponent implements OnInit {
   public hasAlert:boolean; 
   public alertMessage:string;
 
-  constructor(private bf:FormBuilder, private router:Router) { 
+  constructor(private bf:FormBuilder, private router:Router, private authService:AuthService) { 
     this.showSpinner = false;
     this.hasAlert = false;
     this.alertMessage = "";
   }
 
-  clickRegistrarme(){
+  async clickRegistrarme(){   
+    this.hasAlert = false;
+    this.showSpinner = true;
+    
+    try{
+      let registerData = new RegisterCredential(
+        this.getEmailCtrl().value,
+        this.getPassCtrl1().value,
+        this.getNameCtrl().value
+      )
 
+      let response: ResponseFirebase = await this.authService.Registrarse(registerData);
+      if (await response.ok){      
+        this.router.navigate(['']);
+      }
+      else{
+        this.alertMessage = await response.error.description;
+        this.hasAlert = true;
+      }
+    }
+    catch(error){
+      this.alertMessage = "Ocurrió un error inesperado";
+      this.hasAlert = true;
+      console.log(error);
+    }
+    finally{
+      this.showSpinner = false;
+    } 
   }
 
   getNameCtrl(){
@@ -42,28 +71,34 @@ export class RegisterComponent implements OnInit {
 
   goToLogin() {this.router.navigate(['login']); }
 
-  private equalPassValidator(control: AbstractControl): null|object{
-    const pass2 = <string>control.value;
-    const pass1 = <string>this.getPassCtrl1().value;
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
 
-    if(pass1 && pass2){
-      if(pass1 != pass2){
-        return {
-          diferentPass: true
-        };
-      }      
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+            // return if another validator has already found an error on the matchingControl
+            return;
+        }
+
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+            matchingControl.setErrors({ mustMatch: true });
+        } else {
+            matchingControl.setErrors(null);
+        }
     }
-    else{
-      return null;
-    }
-  }
+}
 
   ngOnInit(): void {
     this.registerForm = this.bf.group({
       nameCtrl:['', [Validators.required, Validators.minLength(4)]],
       emailCtrl:['', [Validators.required, Validators.email]],
       passCtrl1:['', [Validators.required, Validators.minLength(6)]],
-      passCtrl2:['', [Validators.required, Validators.minLength(6), this.equalPassValidator]]
-    })
+      passCtrl2:['', [Validators.required, Validators.minLength(6)]]
+    },
+    {
+      validator: this.MustMatch('passCtrl1', 'passCtrl2')
+    });
   }
 }
