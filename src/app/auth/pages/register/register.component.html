@@ -38,7 +38,7 @@
         <small class="invalid" *ngIf="getPassCtrl2()?.errors?.mustMatch && getPassCtrl2()?.touched">La contraseña debe ser la misma</small>
       </div>
       <div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="registerForm.invalid || showSpinner">Registrarme</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="registerForm.invalid || showSpinner">Registrarme</button>        
       </div>
       <br>
       <small class=""><a [routerLink]="" (click)="goToLogin()">¿Ya tenés cuenta?</a></small>

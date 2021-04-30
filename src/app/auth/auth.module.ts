@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule }from '@angular/fire/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AuthService } from './services/auth.service';
 
 
 @NgModule({
@@ -21,6 +22,9 @@ import { RegisterComponent } from './pages/register/register.component';
     AuthRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,        
+  ],
+  exports:[
+    
   ]
 })
 export class AuthModule { }

@@ -3,7 +3,9 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { RegisterCredential } from '../../models/register-credential';
 import { ResponseFirebase } from '../../models/response-firebase';
+import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +19,10 @@ export class RegisterComponent implements OnInit {
   public hasAlert:boolean; 
   public alertMessage:string;
 
-  constructor(private bf:FormBuilder, private router:Router, private authService:AuthService) { 
+  constructor(private bf:FormBuilder, 
+    private router:Router, 
+    private authService:AuthService,
+    private userService:UsersService) { 
     this.showSpinner = false;
     this.hasAlert = false;
     this.alertMessage = "";
@@ -34,8 +39,13 @@ export class RegisterComponent implements OnInit {
         this.getNameCtrl().value
       )
 
+      let user = new User();
+      user.name = this.getNameCtrl().value;
+      user.email = this.getEmailCtrl().value;
+
       let response: ResponseFirebase = await this.authService.Registrarse(registerData);
-      if (await response.ok){      
+      if (await response.ok){  
+        this.userService.addItem(user);
         this.router.navigate(['']);
       }
       else{
@@ -88,7 +98,7 @@ export class RegisterComponent implements OnInit {
             matchingControl.setErrors(null);
         }
     }
-}
+  }
 
   ngOnInit(): void {
     this.registerForm = this.bf.group({

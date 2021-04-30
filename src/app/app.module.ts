@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/services/auth.service';
 import { HomeComponent } from './pages/home/home.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
+import { ChatModule } from './chat/chat.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { GameCardComponent } from './components/game-card/game-card.component';
     FormsModule,
     ReactiveFormsModule,
     AuthModule,
+    ChatModule,
     AppRoutingModule,    
     //ReactiveFormsModule
   ],
