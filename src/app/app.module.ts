@@ -11,6 +11,7 @@ import { GameCardComponent } from './components/game-card/game-card.component';
 import { ChatModule } from './chat/chat.module';
 import { UsersService } from './auth/services/users.service';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     GameCardComponent,
     FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,8 +4,8 @@ import { AuthenticateGuard } from './auth/guards/authenticate.guard';
 import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  {path:"", component: HomeComponent, canActivate:[AuthenticateGuard]},
-  //{path:"", component: HomeComponent},
+  //{path:"", component: HomeComponent, canActivate:[AuthenticateGuard]},
+  {path:"", component: HomeComponent},
   {path:"home", component: HomeComponent, canActivate:[AuthenticateGuard]},  
 ];
 
