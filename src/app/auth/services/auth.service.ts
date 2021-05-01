@@ -12,11 +12,11 @@ import { ResponseFirebase } from '../models/response-firebase';
 })
 
 export class AuthService {
-  
-  private userId: any;    
+      
+  private isAuth:boolean = false;
 
   constructor(private authDb: AngularFireAuth) {      
-      this.userId = null;
+
   }
 
   public async Ingresar(loginData: Credential): Promise<ResponseFirebase>{  
@@ -24,12 +24,11 @@ export class AuthService {
 
     await this.authDb.signInWithEmailAndPassword(loginData.GetEmail(), loginData.GetPass())
     .then((userCredential) => {                 
-      CurrentUser.isAuth = true;
-      CurrentUser.user = userCredential.user;
+      this.isAuth = true;
       response.ok = true;
     })
     .catch((error) => {
-      CurrentUser.isAuth = false;
+      this.isAuth = false;
       let errorFirebase = ErrorHandleFirebase.getErrorByCode(error.code);           
       response.ok = false;
       response.error = errorFirebase;          
@@ -43,12 +42,11 @@ export class AuthService {
 
     await this.authDb.createUserWithEmailAndPassword(registerData.GetEmail(), registerData.GetPass())
       .then((userCredential) => {
-        CurrentUser.isAuth = true;
-        CurrentUser.user = userCredential.user;
+        this.isAuth = true;
         response.ok = true;
       })
       .catch((error) => {
-        CurrentUser.isAuth = false;
+        this.isAuth = false;
         let errorFirebase = ErrorHandleFirebase.getErrorByCode(error.code);           
         response.ok = false;
         response.error = errorFirebase;      
@@ -59,14 +57,10 @@ export class AuthService {
 
   public Desloguearse(){    
     this.authDb.signOut();
-    CurrentUser.isAuth = false;
-  }
-
-  public GetUserId(){
-    return this.userId;
+    this.isAuth = false;
   }
 
   public GetIsAuth():boolean{    
-    return CurrentUser.isAuth;
+    return this.isAuth;
   }
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Credential } from '../../models/credential';
 import { ResponseFirebase } from '../../models/response-firebase';
 import { AuthService } from '../../services/auth.service';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb:FormBuilder, 
     private authService: AuthService,
-    private router:Router) {
+    private router:Router,
+    private userService:UsersService) {
     this.showSpinner = false;
     this.hasAlert = false;
     this.alertMessage ="";
@@ -39,7 +41,8 @@ export class LoginComponent implements OnInit {
     try{           
       let response: ResponseFirebase = await this.authService.Ingresar(this.credential);
       
-      if (await response.ok){      
+      if (await response.ok){   
+        this.userService.setCurrentUserById(this.credential.GetEmail());
         this.router.navigate(['']);
       }
       else{        

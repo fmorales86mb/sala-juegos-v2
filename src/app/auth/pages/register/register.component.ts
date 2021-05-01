@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
 
       let response: ResponseFirebase = await this.authService.Registrarse(registerData);
       if (await response.ok){  
-        this.userService.addItem(user);
+        this.userService.addUser(user);
         this.router.navigate(['']);
       }
       else{

@@ -8,17 +8,30 @@ import { User } from '../models/user';
 })
 export class UsersService {
 
-  currentUser:User;
+  private collName:string = 'users';
+  currentUser:User;    
+
   private itemsCollection: AngularFirestoreCollection<User>;
-  items: Observable<User[]>;
+    items: Observable<User[]>;    
 
-  constructor(private afs: AngularFirestore) {
-    this.itemsCollection = afs.collection<User>('users');
-    this.items = this.itemsCollection.valueChanges();
-  }
+    constructor(private afs: AngularFirestore) {
+      this.itemsCollection = afs.collection<User>(this.collName);
+      this.items = this.itemsCollection.valueChanges();
+    }
+  
+    addUser(item: User) {
+      this.itemsCollection.doc(item.email).set(Object.assign({}, item));  
+      this.currentUser = item;  
+    }    
 
-  addItem(item: User) {
-    this.itemsCollection.add(Object.assign({}, item));
-    this.currentUser = item;
-  }
+    getUser(id:string){
+      return this.itemsCollection.doc(id).get();
+    }
+
+    setCurrentUserById(id:string): void{
+      this.itemsCollection.doc(id).get().subscribe(user => {
+        console.log(user.data());
+        this.currentUser = user.data();
+      });
+    }
 }

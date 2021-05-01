@@ -9,12 +9,15 @@ import { AuthService } from './auth/services/auth.service';
 import { HomeComponent } from './pages/home/home.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { ChatModule } from './chat/chat.module';
+import { UsersService } from './auth/services/users.service';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     GameCardComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { ChatModule } from './chat/chat.module';
     AppRoutingModule,    
     //ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
