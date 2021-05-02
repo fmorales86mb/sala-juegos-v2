@@ -12,6 +12,8 @@ import { ChatModule } from './chat/chat.module';
 import { UsersService } from './auth/services/users.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { PiedraPapelTijeraComponent } from './pages/piedra-papel-tijera/piedra-papel-tijera.component';
+import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { HeaderComponent } from './components/header/header.component';
     GameCardComponent,
     FooterComponent,
     HeaderComponent,
+    PiedraPapelTijeraComponent,
+    QuienSoyComponent,
   ],
   imports: [
     BrowserModule,

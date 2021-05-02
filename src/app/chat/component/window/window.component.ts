@@ -52,7 +52,7 @@ export class WindowComponent implements OnInit {
   ngOnInit(): void {
 
     this.chatForm = this.fb.group({
-      messageCtrl:['', [Validators.required, Validators.maxLength(20)]],      
+      messageCtrl:['', [Validators.required, Validators.maxLength(50)]],      
     });
 
     this.mjeService.items.subscribe(

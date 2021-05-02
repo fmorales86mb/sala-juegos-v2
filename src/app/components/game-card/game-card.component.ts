@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CardDto } from 'src/app/models/card-dto';
 
 @Component({
   selector: 'app-game-card',
@@ -7,11 +9,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GameCardComponent implements OnInit {
 
-  @Input() title:string;
+  @Input() data:CardDto;
+  imgSrc:string;
 
-  constructor() { }
+  constructor(private router:Router) {
+
+  }
 
   ngOnInit(): void {
+    this.imgSrc = "../../../assets/" + this.data.img;
+  }
+
+  goToGame(){
+    this.router.navigate([this.data.href]); 
   }
 
 }

@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  showChat:boolean;
+  constructor() { 
+    this.showChat =false;
+  }
 
   ngOnInit(): void {
   }
 
+  togleChat(){
+    this.showChat = !this.showChat;
+  }
 }

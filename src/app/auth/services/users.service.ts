@@ -30,7 +30,6 @@ export class UsersService {
 
     setCurrentUserById(id:string): void{
       this.itemsCollection.doc(id).get().subscribe(user => {
-        console.log(user.data());
         this.currentUser = user.data();
       });
     }

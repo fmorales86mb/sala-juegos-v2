@@ -1,10 +1,20 @@
 <div>
     <app-header></app-header>
+    
     <div class="container">
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mb-3 text-center">
             <div class="col">
-              <app-game-card></app-game-card>
+              <app-game-card [data]="dataPiedraPapelTijera"></app-game-card>
             </div>
+            <div class="col">
+                <app-game-card [data]="dataPiedraPapelTijera"></app-game-card>
+              </div>
+              <div class="col">
+                <app-game-card [data]="dataPiedraPapelTijera"></app-game-card>
+              </div>
+              <div class="col">
+                <app-game-card [data]="dataPiedraPapelTijera"></app-game-card>
+              </div>
         </div>
     </div>
 </div>

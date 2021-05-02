@@ -56,8 +56,8 @@ export class AuthService {
   }
 
   public Desloguearse(){    
-    this.authDb.signOut();
     this.isAuth = false;
+    this.authDb.signOut();
   }
 
   public GetIsAuth():boolean{    

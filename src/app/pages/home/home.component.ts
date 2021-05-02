@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CardDto } from 'src/app/models/card-dto';
 import { Data } from 'src/app/models/data';
 import { TestService } from 'src/app/services/test.service';
 
@@ -11,12 +12,18 @@ import { TestService } from 'src/app/services/test.service';
 export class HomeComponent implements OnInit {
 
   public loginForm: FormGroup;
-  public titleGame:string;
+  public dataTateti:CardDto;
+  public dataPiedraPapelTijera:CardDto;
+  public dataMemotest:CardDto;
+  public dataJuegoPropio:CardDto;
 
   dataTest: Data[];
 
   constructor(private fb:FormBuilder, private testService:TestService) {
-    this.titleGame = "Ta-Te-Ti";
+    this.dataPiedraPapelTijera = new CardDto();
+    this.dataPiedraPapelTijera.href = "piedra-papel-tijera";
+    this.dataPiedraPapelTijera.img = "piedra-papel-tijera-logo.jpg";
+    this.dataPiedraPapelTijera.title = "Piedra Papel o Tijera";
    }
 
   clickIngresar(){

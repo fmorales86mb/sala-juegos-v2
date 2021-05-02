@@ -18,7 +18,7 @@
     <form [formGroup]="chatForm" (ngSubmit)="enviarMje()">
       <input type="text" class="form-control mje-ctrl" id="floatingInput" placeholder="Escriba aquí su mensaje" [(ngModel)]="mensaje" formControlName="messageCtrl">      
       <button type="submit" class="w-100 btn btn-lg btn-primary" [disabled]="chatForm.invalid">Enviar</button>      
-      <small class="invalid" *ngIf="getMessageCtrl()?.errors?.maxlength && getMessageCtrl()?.touched">Máximo 20 caracteres</small>
+      <small class="invalid" *ngIf="getMessageCtrl()?.errors?.maxlength && getMessageCtrl()?.touched">Máximo 50 caracteres</small>
     </form>
     
   </div>

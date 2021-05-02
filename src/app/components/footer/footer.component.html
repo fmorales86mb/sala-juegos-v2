@@ -1,16 +1,15 @@
-<!-- <div class="chat-window">
-  <app-window></app-window>  
-</div> -->
+
+<app-window class="chat-window" *ngIf="showChat"></app-window>
+
 <footer class="footer mt-auto py-3 bg-dark">
   <div class="container">
     <div class="row">
       <div class="col-10">
-        <span class="text-muted text-center">© Federico Morales 4°B 2021</span>
+        <span class="text-muted text-center">Federico Morales 4°B 2021</span>
       </div>
-      <div class="col">
-        <!-- <a class="text-decoration-none"><i class="bi bi-chat"> Chat</i> </a> -->
+      <div class="col text-center">
         <i class="bi bi-chat text-light">
-          <a class="text-decoration-none" [routerLink]=""> Chat</a>
+          <a class="text-decoration-none" [routerLink]="" (click)="togleChat()"> Chat</a>
         </i>
       </div>
     </div>
