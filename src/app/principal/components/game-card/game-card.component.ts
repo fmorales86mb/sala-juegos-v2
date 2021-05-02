@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CardDto } from 'src/app/models/card-dto';
+import { CardDto } from 'src/app/principal/models/card-dto';
 
 @Component({
   selector: 'app-game-card',

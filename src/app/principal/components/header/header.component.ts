@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { UsersService } from 'src/app/auth/services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,17 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private autService: AuthService, private router:Router) { }
+  userName:string;
+
+  constructor(private autService: AuthService, private router:Router, private userService:UsersService) { }
 
   ngOnInit(): void {
+    if(this.userService.currentUser){
+      this.userName = this.userService.currentUser.name;
+    }
+    else{
+      this.userName = "Test";
+    }
   }
 
   clickLogout(){

@@ -42,8 +42,12 @@ export class LoginComponent implements OnInit {
       let response: ResponseFirebase = await this.authService.Ingresar(this.credential);
       
       if (await response.ok){   
-        this.userService.setCurrentUserById(this.credential.GetEmail());
-        this.router.navigate(['']);
+        this.userService.getCurrentUserById(this.credential.GetEmail()).subscribe(
+          user => {
+            this.userService.currentUser = user.data();
+            this.router.navigate(['']);
+            this.showSpinner = false;
+          });
       }
       else{        
         this.alertMessage = await response.error.description;
@@ -54,10 +58,8 @@ export class LoginComponent implements OnInit {
       this.alertMessage = "Ocurrió un error inesperado";
       this.hasAlert = true;
       console.log(error);
-    }
-    finally{
       this.showSpinner = false;
-    }     
+    }   
   }
 
   getEmailCtrl(){return this.loginForm.get("emailCtrl");}

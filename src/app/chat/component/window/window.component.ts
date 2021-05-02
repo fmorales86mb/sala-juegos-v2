@@ -19,7 +19,15 @@ export class WindowComponent implements OnInit {
   showSpinner:boolean;
   
   constructor(private mjeService: ChatService, private userService:UsersService, private fb:FormBuilder) {     
-    this.showSpinner = true;    
+    this.showSpinner = true;  
+    
+    this.mjeService.items.subscribe(
+      (mje)=>{        
+        this.mensajes = mje;
+        this.showSpinner = false;
+        this.scrollToBottom();
+      }
+    );  
   }
 
   enviarMje(){
@@ -55,13 +63,7 @@ export class WindowComponent implements OnInit {
       messageCtrl:['', [Validators.required, Validators.maxLength(50)]],      
     });
 
-    this.mjeService.items.subscribe(
-      (mje)=>{        
-        this.mensajes = mje;
-        this.showSpinner = false;
-        this.scrollToBottom();
-      }
-    );  
+    
         
     this.scrollToBottom();
   }

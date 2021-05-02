@@ -20,17 +20,15 @@ export class UsersService {
     }
   
     addUser(item: User) {
-      this.itemsCollection.doc(item.email).set(Object.assign({}, item));  
-      this.currentUser = item;  
+      this.currentUser = item;
+      this.itemsCollection.doc(item.email).set(Object.assign({}, item));    
     }    
 
     getUser(id:string){
       return this.itemsCollection.doc(id).get();
     }
 
-    setCurrentUserById(id:string): void{
-      this.itemsCollection.doc(id).get().subscribe(user => {
-        this.currentUser = user.data();
-      });
+    getCurrentUserById(id:string){
+      return this.itemsCollection.doc(id).get();
     }
 }
