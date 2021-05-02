@@ -20,6 +20,11 @@ export class HomeComponent implements OnInit {
     this.dataPiedraPapelTijera.href = "piedra-papel-tijera";
     this.dataPiedraPapelTijera.img = "piedra-papel-tijera-logo.jpg";
     this.dataPiedraPapelTijera.title = "Piedra Papel o Tijera";
+
+    this.dataTateti = new CardDto();
+    this.dataTateti.href = "tateti";
+    this.dataTateti.img = "tateti.jpg";
+    this.dataTateti.title = "Ta-Te-Ti";
    }
 
   clickIngresar(){

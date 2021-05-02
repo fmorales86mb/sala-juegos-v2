@@ -1,12 +1,11 @@
 <div class="card mb-4 rounded-3 shadow-sm">
-    <div class="card-header py-2">
+    <div class="card-header py-2 header-card">
       <h4 class="my-0 fw-normal">{{data.title}}</h4>
     </div>
     <div class="card-body">
       <div>
-        <!-- <img src="/src/assets/piedra-papel-tijera-logo.jpg" class="card-img-top"> -->
         <img [src]="imgSrc" class="card-img-top">
       </div>
-      <button type="button" class="w-100 btn btn-lg btn-primary" (click)="goToGame()">Jugar!</button>
+      <button type="button" class="w-100 btn btn-lg btn-primary " (click)="goToGame()">Jugar!</button>
     </div>
   </div>

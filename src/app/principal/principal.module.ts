@@ -9,6 +9,7 @@ import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
 import { PiedraPapelTijeraComponent } from './pages/piedra-papel-tijera/piedra-papel-tijera.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { ChatModule } from '../chat/chat.module';
+import { TatetiComponent } from './pages/tateti/tateti.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ChatModule } from '../chat/chat.module';
     HeaderComponent,
     QuienSoyComponent,
     PiedraPapelTijeraComponent,
-    GameCardComponent
+    GameCardComponent,
+    TatetiComponent
   ],
   imports: [
     ChatModule,
