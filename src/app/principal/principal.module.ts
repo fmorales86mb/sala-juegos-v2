@@ -10,6 +10,9 @@ import { PiedraPapelTijeraComponent } from './pages/piedra-papel-tijera/piedra-p
 import { GameCardComponent } from './components/game-card/game-card.component';
 import { ChatModule } from '../chat/chat.module';
 import { TatetiComponent } from './pages/tateti/tateti.component';
+import { MemotestComponent } from './pages/memotest/memotest.component';
+import { EncuestaComponent } from './pages/encuesta/encuesta.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,11 +23,14 @@ import { TatetiComponent } from './pages/tateti/tateti.component';
     QuienSoyComponent,
     PiedraPapelTijeraComponent,
     GameCardComponent,
-    TatetiComponent
+    TatetiComponent,
+    MemotestComponent,
+    EncuestaComponent
   ],
   imports: [
     ChatModule,
     CommonModule,
+    ReactiveFormsModule,
     PrincipalRoutingModule
   ]
 })

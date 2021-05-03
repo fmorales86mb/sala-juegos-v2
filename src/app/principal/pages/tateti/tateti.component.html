@@ -1,4 +1,4 @@
-<div>
+<div class="page">
     <app-header></app-header>
     
     <div class="container">
@@ -8,7 +8,7 @@
                     <h1 class="text-center">{{userName}}</h1>
                     <h2 class="text-center">{{triunfos}}</h2>
                 </div>
-                <div class="col-sm col-md-6 px-3 ">
+                <div class="col-sm col-md-6 px-3 d-flex justify-content-center">
                        <table background="../../../../assets/tateti-table.jpg">
                             <tr>
                                 <td (click)="clickHumano(1)">                                    
@@ -52,6 +52,8 @@
             </div>
         </div>
     </div>
+
+    <app-footer></app-footer>
 </div>
 
-<app-footer></app-footer>
+

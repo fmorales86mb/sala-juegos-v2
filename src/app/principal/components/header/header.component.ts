@@ -35,4 +35,8 @@ export class HeaderComponent implements OnInit {
   goToQuienSoy(){
     this.router.navigate(["quien-soy"]);
   }
+
+  goToEncuesta(){
+    this.router.navigate(["encuesta"]);
+  }
 }

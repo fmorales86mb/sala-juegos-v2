@@ -1,13 +1,13 @@
 
 <app-window class="chat-window" *ngIf="showChat"></app-window>
 
-<footer class="footer mt-auto py-3 bg-dark">
+<footer class="footer mt-auto py-3 bg-dark w-100 fixed-bottom">
   <div class="container">
     <div class="row">
-      <div class="col-10">
+      <div class="col-11">
         <span class="text-muted text-center">Federico Morales 4°B 2021</span>
       </div>
-      <div class="col text-center">
+      <div class="col d-flex justify-content-end">
         <i class="bi bi-chat text-light">
           <a class="text-decoration-none" [routerLink]="" (click)="togleChat()"> Chat</a>
         </i>

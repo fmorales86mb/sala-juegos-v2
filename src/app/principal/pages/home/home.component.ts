@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.dataPiedraPapelTijera = new CardDto();
     this.dataPiedraPapelTijera.href = "piedra-papel-tijera";
     this.dataPiedraPapelTijera.img = "piedra-papel-tijera-logo.jpg";
-    this.dataPiedraPapelTijera.title = "Piedra Papel o Tijera";
+    this.dataPiedraPapelTijera.title = "Piedra, Papel o Tijera";
 
     this.dataTateti = new CardDto();
     this.dataTateti.href = "tateti";
@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
     this.dataTateti.title = "Ta-Te-Ti";
 
     this.dataMemotest = new CardDto();
-    this.dataMemotest.href = "";
-    this.dataMemotest.img = "";
+    this.dataMemotest.href = "memotest";
+    this.dataMemotest.img = "memotest-logo.png";
     this.dataMemotest.title = "Memotest";
 
     this.dataJuegoPropio = new CardDto();

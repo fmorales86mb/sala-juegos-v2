@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuienSoyComponent implements OnInit {
 
-  constructor() { }
+  perfil:string;
+
+  constructor() { 
+    this.perfil = "../../../../assets/perfil01.jpg";
+  }
 
   ngOnInit(): void {
   }

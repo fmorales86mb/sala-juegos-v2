@@ -1,0 +1,77 @@
+<div class="page">      
+    <app-header></app-header>  
+    <div class="container">    
+        <main class="form-signin">
+            <form [formGroup]="encuestaForm" (ngSubmit)="clickGuardarEncuesta()">
+              
+              <h1 class="h3 mb-3 fw-normal text-center">Complete esta breve encuesta</h1>
+          
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" formControlName="nameCtrl">
+                <label for="floatingInput">Nombre</label>
+                <div class="errors">
+                  <small class="invalid" *ngIf="getNameCtrl()?.errors?.required && getNameCtrl()?.touched">Campo obligatorio</small>
+                  <small class="invalid" *ngIf="getNameCtrl()?.errors?.minlength && getNameCtrl()?.touched">Mínimo 4 caracteres</small>
+                </div>
+              </div>
+
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" formControlName="lastNameCtrl">
+                <label for="floatingInput">Apellido</label>
+                <div class="errors">
+                  <small class="invalid" *ngIf="getLastNameCtrl()?.errors?.required && getLastNameCtrl()?.touched">Campo obligatorio</small>
+                  <small class="invalid" *ngIf="getLastNameCtrl()?.errors?.minlength && getLastNameCtrl()?.touched">Mínimo 4 caracteres</small>
+                </div>
+              </div>
+
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" formControlName="ageCtrl">
+                <label for="floatingInput">Edad</label>
+                <div class="errors">
+                  <small class="invalid" *ngIf="getAgeCtrl()?.errors?.required && getAgeCtrl()?.touched">Campo obligatorio</small>
+                  <small class="invalid" *ngIf="(getAgeCtrl()?.errors?.min || getAgeCtrl()?.errors?.max) && getAgeCtrl()?.touched && !getAgeCtrl()?.errors?.pattern">Edad entre 18 y 99 años</small>
+                  <small class="invalid" *ngIf="getAgeCtrl()?.errors?.pattern && getAgeCtrl()?.touched">Sólo se permiten números</small>
+                </div>
+              </div>
+
+              <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInput" formControlName="phoneCtrl">
+                <label for="floatingInput">Teléfono</label>
+                <div class="errors">
+                  <small class="invalid" *ngIf="getPhoneCtrl()?.errors?.required && getPhoneCtrl()?.touched">Campo obligatorio</small>
+                  <small class="invalid" *ngIf="getPhoneCtrl()?.errors?.pattern && getPhoneCtrl()?.touched">Sólo se permiten números</small>
+                  <small class="invalid" *ngIf="getPhoneCtrl()?.errors?.maxlength && getPhoneCtrl()?.touched">Máximo 10 caracteres</small>                  
+                </div>
+              </div>
+
+              
+              <div class="form-group">
+                <label for="power"><h4>¿Qué juego es le gustó más?</h4></label>
+                <select class="form-control" id="power" formControlName="q1Ctrl">
+                  <option *ngFor="let game of games" [value]="game">{{game}}</option>
+                </select>
+                <div class="errors">
+                  <small class="invalid" *ngIf="getQ1Ctrl()?.errors?.required && getQ1Ctrl()?.touched">Campo obligatorio</small>             
+                </div>
+              </div>
+
+              <div> 
+                <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="encuestaForm.invalid || showSpinner">Enviar</button>        
+              </div>
+              <br>
+        
+              <div class="mt-2 text-center" *ngIf="showSpinner">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden"></span>
+                </div>
+              </div>
+        
+              <div class="alert alert-danger small" role="alert"  *ngIf="alertMessage != ''" >
+                {{alertMessage}}
+              </div>
+            </form>
+        </main>   
+    </div>   
+    <app-footer></app-footer>    
+</div>
+  
