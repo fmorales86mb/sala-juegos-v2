@@ -25,6 +25,16 @@ export class HomeComponent implements OnInit {
     this.dataTateti.href = "tateti";
     this.dataTateti.img = "tateti.jpg";
     this.dataTateti.title = "Ta-Te-Ti";
+
+    this.dataMemotest = new CardDto();
+    this.dataMemotest.href = "";
+    this.dataMemotest.img = "";
+    this.dataMemotest.title = "Memotest";
+
+    this.dataJuegoPropio = new CardDto();
+    this.dataJuegoPropio.href = "";
+    this.dataJuegoPropio.img = "";
+    this.dataJuegoPropio.title = "Juego Propio";
    }
 
   clickIngresar(){
