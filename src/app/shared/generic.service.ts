@@ -5,13 +5,17 @@ export class Generic<T>{
     protected itemsCollection: AngularFirestoreCollection<T>;
     items: Observable<T[]>;    
 
-    constructor(private afs: AngularFirestore, collName:string) {
-      this.itemsCollection = afs.collection<T>(collName);
+    constructor(private afs: AngularFirestore) {
+      
+    }
+
+    setCollection(collName:string){
+      this.itemsCollection = this.afs.collection<T>(collName);
       this.items = this.itemsCollection.valueChanges();
     }
   
     addItem(item: T) {
-      this.itemsCollection.add(Object.assign({}, item));    
+      return this.itemsCollection.add(Object.assign({}, item));    
     }
 
     setItemWithId(item: T, id:string) {

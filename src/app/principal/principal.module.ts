@@ -12,7 +12,7 @@ import { ChatModule } from '../chat/chat.module';
 import { TatetiComponent } from './pages/tateti/tateti.component';
 import { MemotestComponent } from './pages/memotest/memotest.component';
 import { EncuestaComponent } from './pages/encuesta/encuesta.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ChatModule,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     PrincipalRoutingModule
   ]
 })

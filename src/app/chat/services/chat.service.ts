@@ -9,6 +9,7 @@ import { Generic } from '../../shared/generic.service';
 export class ChatService extends Generic<Message> {
 
   constructor(private fire: AngularFirestore){
-    super(fire, "messages");
-  }
+    super(fire);
+    super.setCollection("messages");
+  } 
 }
