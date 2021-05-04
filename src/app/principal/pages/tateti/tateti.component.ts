@@ -168,19 +168,22 @@ export class TatetiComponent implements OnInit {
   }
 
   checkMachine(){
-    
-    let check:boolean = false;
-
-    while(!check){
-      let option = this.getRandomInt(1, 9);
-      check = this.checkCel(option, false);
-    }
-
-    this.turnoHumano = true;
-    this.verificarResultado(false);
     if(this.isGameOver()){
+      console.log("isGameOver");
       this.initCeldas();
     }
+    else{
+      let check:boolean = false;
+      
+      while(!check){
+        let option = this.getRandomInt(1, 9);
+        check = this.checkCel(option, false);
+      }
+    }
+
+    this.verificarResultado(false);
+    
+    this.turnoHumano = true;
   }
 
   verificarResultado(humano:boolean):boolean{
@@ -229,11 +232,11 @@ export class TatetiComponent implements OnInit {
       this.celda12.isCheck &&
       this.celda13.isCheck &&
       this.celda21.isCheck &&
-      this.celda21.isCheck &&
-      this.celda21.isCheck &&
+      this.celda22.isCheck &&
+      this.celda23.isCheck &&
       this.celda31.isCheck &&
-      this.celda31.isCheck &&
-      this.celda31.isCheck 
+      this.celda32.isCheck &&
+      this.celda33.isCheck 
       ){
         gameOver = true;
       }

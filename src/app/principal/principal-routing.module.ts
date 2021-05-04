@@ -28,8 +28,8 @@ const routesTest: Routes = [
   {path:"encuesta", component:EncuestaComponent}
 ];
 
-//const routes: Routes = routesProd;
-const routes: Routes = routesTest;
+const routes: Routes = routesProd;
+// const routes: Routes = routesTest;
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
