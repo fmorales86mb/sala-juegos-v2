@@ -39,8 +39,10 @@ export class LoginComponent implements OnInit {
     );    
 
     try{           
+      console.log(this.credential);
       let response: ResponseFirebase = await this.authService.Ingresar(this.credential);
-      
+      console.log(response);
+
       if (await response.ok){   
         this.userService.getCurrentUserById(this.credential.GetEmail()).subscribe(
           user => {
@@ -51,7 +53,8 @@ export class LoginComponent implements OnInit {
       }
       else{        
         this.alertMessage = await response.error.description;
-        this.hasAlert = true;
+        this.showSpinner = false;
+        this.hasAlert = true;        
       }      
     }
     catch(error){

@@ -41,7 +41,10 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="registerForm.invalid || showSpinner">Registrarme</button>        
       </div>
       <br>
-      <small class=""><a [routerLink]="" (click)="goToLogin()">¿Ya tenés cuenta?</a></small>
+      
+      <div class="mb-2">
+        <small class=""><a [routerLink]="" (click)="goToLogin()">¿Ya tenés cuenta?</a></small>
+      </div>      
 
       <div class="mt-2 text-center" *ngIf="showSpinner">
         <div class="spinner-border" role="status">

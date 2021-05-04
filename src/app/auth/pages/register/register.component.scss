@@ -3,7 +3,6 @@
   max-width: 330px;
   padding: 15px;
   margin: auto;
-  //margin-bottom: 10%;
   margin-top: 7rem;
   }
   
@@ -15,16 +14,12 @@
     z-index: 2;
   }
   
-  // .form-signin input[type="email"] {
-    
-  // }
+  .form-signin .alert{
+    padding: 12px;
+  }
   
-  // .form-signin input {
-  //   margin-bottom: 10px;    
-  // }
-
-  .invalid {
-    color: red;
+.invalid {
+  color: red;
 }
 .errors{
   margin-bottom: 10px;
