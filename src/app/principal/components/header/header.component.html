@@ -12,12 +12,25 @@
               <a class="nav-link active" [routerLink]="" (click)="goToQuienSoy()">Quién Soy</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" [routerLink]="" >Registros</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link active" [routerLink]="" (click)="goToEncuesta()">Completar Encuesta</a>
             </li>
+            <li class="nav-item">
+              <div class="dropdown">
+                <a class="nav-link active d-flex align-items-center col-lg-4 mb-lg-0 dropdown-toggle" [routerLink]="" id="dropdownNavLink" data-bs-toggle="dropdown" aria-expanded="true">
+                  Registros
+                </a>
+                <ul class="dropdown-menu text-small shadow " aria-labelledby="dropdownNavLink" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 34px);" data-popper-placement="bottom-start">
+                  <li><a class="dropdown-item active" >Overview</a></li>
+                  <li><a class="dropdown-item" (click)="goToRegistro(1)">Piedra, Papel o Tijera</a></li>
+                  <li><a class="dropdown-item" (click)="goToRegistro(2)">Ta-Te-Ti</a></li>
+                  <li><a class="dropdown-item" (click)="goToRegistro(3)">Memotest</a></li>
+                  <li><a class="dropdown-item" (click)="goToRegistro(4)">Juego Propio</a></li>
+                </ul>
+              </div>
+            </li>
+
           </ul>
+          
           <form class="d-flex" (ngSubmit)="clickLogout()">
             <label class="text-light p-2 px-4">{{userName}}</label>
             <button class="btn btn-outline-warning" type="submit">Salir <i class="bi bi-power"></i></button>

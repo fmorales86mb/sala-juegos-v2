@@ -39,4 +39,8 @@ export class HeaderComponent implements OnInit {
   goToEncuesta(){
     this.router.navigate(["encuesta"]);
   }
+
+  goToRegistro(juegoId:number){
+    this.router.navigate(['resultados', { id: juegoId }]);
+  }
 }

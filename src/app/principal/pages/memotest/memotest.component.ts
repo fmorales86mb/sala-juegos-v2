@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/auth/services/users.service';
+import { RegistroJuego } from '../../models/registro-juego';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-memotest',
@@ -18,8 +20,19 @@ export class MemotestComponent implements OnInit {
   intentos:number;
   userName:string;
   habilitarInicio:boolean;
+  juegoIniciado:boolean;
+  registroJuego:RegistroJuego;
+  triunfos:number;
+  derrotas:number;
+  empates:number;
 
-  constructor(private userService: UsersService) { 
+  constructor(private userService: UsersService, private registroService:RegistroService) { 
+    this.triunfos = 0;
+    this.derrotas = 0;
+    this.empates = 0;
+    this.registroJuego = new RegistroJuego(); 
+    this.juegoIniciado = false;
+
     this.celdaCubierta = this.baseSrc + "memotest-celda.jpg";
     if(this.userService.currentUser){
       this.userName = this.userService.currentUser.name;
@@ -35,6 +48,23 @@ export class MemotestComponent implements OnInit {
     this.estado = 0;
     this.intentos = 0;
     this.habilitarInicio = false;
+
+    this.registroJuego.juego = "Memotest";
+    this.registroJuego.juegoId = 3;
+    this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    this.registroJuego.userName = this.userName;
+
+    this.registroService.setCollection("registro-" + this.registroJuego.userEmail);
+  }
+
+  public guardarRegistroDelJuego(){
+    this.registroJuego.derrotas = this.derrotas;
+    this.registroJuego.victorias = this.triunfos;
+    this.registroJuego.empates = this.empates;
+    this.registroJuego.intentos = this.intentos;
+    this.registroJuego.fechaHora = Date.now();
+
+    this.registroService.addItem(this.registroJuego);
   }
 
   initCeldas(){
@@ -45,7 +75,9 @@ export class MemotestComponent implements OnInit {
   }
 
   clickComenzar(){
+    this.guardarRegistroDelJuego();
     this.ngOnInit();
+    this.juegoIniciado = false;
   }
 
   initImages(){
@@ -77,7 +109,8 @@ export class MemotestComponent implements OnInit {
     }    
   }
 
-  clickCelda(celda:number){        
+  clickCelda(celda:number){   
+    this.juegoIniciado = true;     
     if(this.estado != 2){
       this.celdas[celda] = this.srcImages[celda];
       this.estado++;    

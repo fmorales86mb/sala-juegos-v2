@@ -13,6 +13,8 @@ import { TatetiComponent } from './pages/tateti/tateti.component';
 import { MemotestComponent } from './pages/memotest/memotest.component';
 import { EncuestaComponent } from './pages/encuesta/encuesta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResultadosComponent } from './pages/resultados/resultados.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -25,14 +27,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GameCardComponent,
     TatetiComponent,
     MemotestComponent,
-    EncuestaComponent
+    EncuestaComponent,
+    ResultadosComponent
   ],
   imports: [
     ChatModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    PrincipalRoutingModule
+    PrincipalRoutingModule,
+    SharedModule
   ]
 })
 export class PrincipalModule { }

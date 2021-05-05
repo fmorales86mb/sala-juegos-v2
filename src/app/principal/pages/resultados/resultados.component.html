@@ -1,0 +1,42 @@
+<div class="page mb-5">
+    <app-header></app-header>
+    
+    <div class="container">
+        <div class="p-4 p-md-5 mb-5 text-white rounded">
+          <div class="row">
+            <div class="col">
+              <table class="table table-striped table-secondary table-hover table-bordered">
+                <caption *ngIf="!showSpinner">{{juego}}</caption>
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Victorias</th>
+                    <th>Derrotas</th>
+                    <th>Empates</th>
+                    <th>Intentos</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let registro of registros">
+                  <tr>
+                    <td>{{registro.fechaHora | date:'short'}}</td>
+                    <td>{{registro.victorias}}</td>
+                    <td>{{registro.derrotas}}</td>
+                    <td>{{registro.empates}}</td>
+                    <td *ngIf="registro.intentos">{{registro.intentos}}</td>
+                    <td *ngIf="!registro.intentos">-</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="alert alert-info small" role="alert"  *ngIf="!showSpinner && registros.length == 0" >
+                No existen registros para este juego.
+              </div>
+                  
+              <app-spinner [showSpinner]="showSpinner"></app-spinner>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</div>

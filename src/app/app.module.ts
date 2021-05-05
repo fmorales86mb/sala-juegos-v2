@@ -21,7 +21,7 @@ import { PrincipalModule } from './principal/principal.module';
     AuthModule,
     ChatModule,
     AppRoutingModule,
-    PrincipalModule   
+    PrincipalModule,
   ],
   providers: [AuthService, UsersService],
   bootstrap: [AppComponent]

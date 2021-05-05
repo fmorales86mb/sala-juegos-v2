@@ -1,7 +1,8 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/auth/services/users.service';
+import { RegistroJuego } from '../../models/registro-juego';
 import { TatetiCelda } from '../../models/tateti-celda';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-tateti',
@@ -24,14 +25,21 @@ export class TatetiComponent implements OnInit {
   turnoHumano:boolean;
   triunfos:number;
   derrotas:number;
+  empates:number;
   userName:string;
+  juegoIniciado:boolean;
+  registroJuego:RegistroJuego;
 
-  constructor(private userService:UsersService) { 
+  constructor(private userService:UsersService, private registroService:RegistroService) { 
+    this.triunfos = 0;
+    this.derrotas = 0;
+    this.empates = 0;
+    this.registroJuego = new RegistroJuego(); 
+    this.juegoIniciado = false;
+
     this.turnoHumano = true;
     this.srcCruz = "../../../../assets/tateti-cruz.jpg";
     this.srcCirculo = "../../../../assets/tateti-circulo.jpg";
-    this.triunfos = 0;
-    this.derrotas = 0;
     this.initCeldas();
   }
 
@@ -42,6 +50,22 @@ export class TatetiComponent implements OnInit {
     else{
       this.userName = "Test";
     }
+
+    this.registroJuego.juego = "Ta-Te-Ti";
+    this.registroJuego.juegoId = 2;
+    this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    this.registroJuego.userName = this.userName;
+
+    this.registroService.setCollection("registro-" + this.registroJuego.userEmail);
+  }
+
+  public guardarRegistroDelJuego(){
+    this.registroJuego.derrotas = this.derrotas;
+    this.registroJuego.victorias = this.triunfos;
+    this.registroJuego.empates = this.empates;
+    this.registroJuego.fechaHora = Date.now();
+
+    this.registroService.addItem(this.registroJuego);
   }
 
   initCeldas(){
@@ -77,6 +101,7 @@ export class TatetiComponent implements OnInit {
   }
 
   clickHumano(celda:number){
+    this.juegoIniciado = true;
     if(this.turnoHumano){
       if (this.checkCel(celda, true)){
         if(!this.verificarResultado(true)){
@@ -248,7 +273,6 @@ export class TatetiComponent implements OnInit {
     let resultado = false;
     if(celda1.isCheck && celda2.isCheck && celda3.isCheck){
       if(celda1.isHuman == humano && celda2.isHuman == humano && celda3.isHuman == humano){
-        console.log(celda1, celda2, celda3);
         if(humano){
           this.triunfos++;
         }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/auth/services/users.service';
+import { RegistroJuego } from '../../models/registro-juego';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-piedra-papel-tijera',
@@ -16,11 +18,17 @@ export class PiedraPapelTijeraComponent implements OnInit {
   bloquear:boolean;
   triunfos:number;
   derrotas:number;
+  empates:number;
   userName:string;
+  juegoIniciado:boolean;
+  registroJuego:RegistroJuego;
 
-  constructor(private userService:UsersService) { 
+  constructor(private userService:UsersService, private registroService: RegistroService) { 
     this.triunfos = 0;
     this.derrotas = 0;
+    this.empates = 0;
+    this.registroJuego = new RegistroJuego();   
+    this.juegoIniciado = false;
     this.setInitialStatus();
   }
 
@@ -31,9 +39,17 @@ export class PiedraPapelTijeraComponent implements OnInit {
     else{
       this.userName = "Test";
     }
+
+    this.registroJuego.juego = "Piedra, Papel o Tijera";
+    this.registroJuego.juegoId = 1;
+    this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    this.registroJuego.userName = this.userName;
+
+    this.registroService.setCollection("registro-"+this.registroJuego.userEmail);
   }
 
   chose(id:number){
+
     if(!this.bloquear){
       this.executeLogic(id);
     }
@@ -60,6 +76,7 @@ export class PiedraPapelTijeraComponent implements OnInit {
 
     switch(resultado){
       case 0:
+        this.empates++;
         seconds = 1;
         this.srcResultado = "";
         break;
@@ -70,15 +87,16 @@ export class PiedraPapelTijeraComponent implements OnInit {
       case 2:
         this.derrotas++;
         this.srcResultado = "../../../../assets/perder.jpg";
-        break;
-    }
-
-    console.log("humano: ", id, " maquina: ", maquina);
+        break;      
+    }    
 
     this.waitTime(seconds);
   }
 
   getResultado(humano:number, maquina:number):number{
+    if(humano != maquina){
+      this.juegoIniciado = true;
+    }
     if(humano == maquina){
       return 0;
     }
@@ -104,8 +122,10 @@ export class PiedraPapelTijeraComponent implements OnInit {
 
   setInitialStatus(){
     this.bloquear = false;
+     
     this.srcIncognita = "../../../../assets/incognita.jpg";
     this.srcResultado ="";
+    
   }
 
   waitTime(seconds:number){
@@ -114,4 +134,12 @@ export class PiedraPapelTijeraComponent implements OnInit {
     }, seconds*1000 );
   }
   
+  public guardarRegistroDelJuego(){
+    this.registroJuego.derrotas = this.derrotas;
+    this.registroJuego.victorias = this.triunfos;
+    this.registroJuego.empates = this.empates;
+    this.registroJuego.fechaHora = Date.now();
+
+    this.registroService.addItem(this.registroJuego);
+  }
 }
