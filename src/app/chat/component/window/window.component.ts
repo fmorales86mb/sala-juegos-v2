@@ -30,15 +30,14 @@ export class WindowComponent implements OnInit {
     );  
   }
 
-  enviarMje(){
-    //console.log(this.mensajes);    
+  enviarMje(){       
     let mje = new Message();
     mje.message = this.mensaje;  
     mje.userName = this.userService.currentUser.name;
-    mje.userEmail = this.userService.currentUser.email;        
-    let fecha = Date.now();    
+    mje.userEmail = this.userService.currentUser.email;            
+    mje.fecha = Date.now();      
 
-    this.mjeService.setItemWithId(mje, fecha.toString());    
+    this.mjeService.setItemWithId(mje, mje.fecha.toString());    
 
     this.mensaje = "";
   }

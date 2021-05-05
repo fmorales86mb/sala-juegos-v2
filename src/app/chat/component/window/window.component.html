@@ -5,12 +5,20 @@
 
   <div class="card-body chat"> 
     <div #salachat class="mensajes" *ngFor="let mje of mensajes">
-      <div class="mje-chat text-primary" *ngIf="mje.userEmail == userService.currentUser.email">        
-        {{mje.userName}}: {{mje.message}}
-      </div>
-      <div class="mje-chat text-secondary" *ngIf="mje.userEmail != userService.currentUser.email">        
-        {{mje.userName}}: {{mje.message}}
-      </div>
+      
+      <div class="row m-1 ">
+        <div class="col">
+          <div class="alert alert-success p-1" *ngIf="mje.userEmail == userService.currentUser.email">
+            <p class="mb-0"><strong>{{mje.userName}}: </strong><small>{{mje.fecha | date:'short'}}</small></p>
+            <p class="mb-0"> {{mje.message}}</p> 
+          </div>
+
+          <div class="alert alert-secondary p-1" *ngIf="mje.userEmail != userService.currentUser.email">
+            <p class="mb-0"><strong>{{mje.userName}}: </strong><small>{{mje.fecha | date:'short'}}</small></p>
+            <p class="mb-0"> {{mje.message}}</p>
+          </div>
+        </div>        
+      </div>          
     </div>     
   </div>
 
