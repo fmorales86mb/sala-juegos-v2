@@ -1,0 +1,42 @@
+<div class="page mb-5">
+    <app-header></app-header>
+    
+    <div class="container">
+        <div class="p-4 p-md-5 rounded ">
+            <div class="row justify-content-center">
+                <div class="col-md-2 font-game">
+                    <h1 class="text-center text-info">{{userName}}</h1>                    
+                    <h2 class="text-center "><span class="text-success">{{triunfos}}</span> / <span class="text-danger">{{derrotas}}</span></h2>
+                </div>
+                <div class="col-md-7 font-game bg-secondary">
+                    <p class="text-white text-center">{{nro1}} + {{nro2}} = {{result}}</p>                                   
+                </div>    
+                <div class="col-md-3 text-center  bg-secondary">
+                    <img class="bd-placeholder-img mt-3 rounded-circle" [src]="srcResultado" height="120px"> 
+                </div>              
+            </div>
+        </div>
+        <table class="table table-success mb-5">
+            <tr class="text-center">
+                <td>
+                    <button class="button bg-warning rounded-3 display-6" [disabled]="!this.tiempoFuera && !this.hasSelected" (click)="clickVolverJugar()">Volver a jugar!</button>
+                </td>
+                <td>
+                    <button class="button rounded-3" (click)="clickOption(0)">{{options[0]}}</button>
+                </td>
+                <td>
+                    <button class="button rounded-3" (click)="clickOption(1)">{{options[1]}}</button>
+                </td>
+                <td>
+                    <button class="button rounded-3" (click)="clickOption(2)">{{options[2]}}</button>
+                </td>
+                <td>
+                    <button class="button rounded-3" (click)="clickOption(3)">{{options[3]}}</button>
+                </td>                       
+            </tr>
+        </table>   
+    </div>
+
+    <app-footer></app-footer>
+</div>
+

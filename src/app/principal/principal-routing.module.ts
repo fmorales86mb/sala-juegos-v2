@@ -4,6 +4,7 @@ import { AuthenticateGuard } from '../auth/guards/authenticate.guard';
 import { GuardaPartidaGuard } from './guards/guarda-partida.guard';
 import { EncuestaComponent } from './pages/encuesta/encuesta.component';
 import { HomeComponent } from './pages/home/home.component';
+import { JuegoPropioComponent } from './pages/juego-propio/juego-propio.component';
 import { MemotestComponent } from './pages/memotest/memotest.component';
 import { PiedraPapelTijeraComponent } from './pages/piedra-papel-tijera/piedra-papel-tijera.component';
 import { QuienSoyComponent } from './pages/quien-soy/quien-soy.component';
@@ -17,6 +18,7 @@ const routesProd: Routes = [
   {path:"quien-soy", component:QuienSoyComponent, canActivate:[AuthenticateGuard]},
   {path:"tateti", component:TatetiComponent, canActivate:[AuthenticateGuard], canDeactivate:[GuardaPartidaGuard]},
   {path:"memotest", component:MemotestComponent, canActivate:[AuthenticateGuard], canDeactivate:[GuardaPartidaGuard]},
+  {path:"quema-coco", component:JuegoPropioComponent, canActivate:[AuthenticateGuard], canDeactivate:[GuardaPartidaGuard]},
   {path:"encuesta", component:EncuestaComponent, canActivate:[AuthenticateGuard]},
   {path:"resultados", component:ResultadosComponent, canActivate:[AuthenticateGuard]}
 ];
@@ -28,6 +30,7 @@ const routesTest: Routes = [
   {path:"quien-soy", component:QuienSoyComponent},
   {path:"tateti", component:TatetiComponent, canDeactivate:[GuardaPartidaGuard]},
   {path:"memotest", component:MemotestComponent, canDeactivate:[GuardaPartidaGuard]},
+  {path:"quema-coco", component:JuegoPropioComponent, canDeactivate:[GuardaPartidaGuard]},
   {path:"encuesta", component:EncuestaComponent},
   {path:"resultados", component:ResultadosComponent}
 ];

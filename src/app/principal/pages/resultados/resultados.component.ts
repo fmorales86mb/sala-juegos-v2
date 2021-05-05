@@ -17,7 +17,7 @@ export class ResultadosComponent implements OnInit {
   showSpinner:boolean;
   userEmail:string;
   registros:RegistroJuego[];
-  juego:string;
+  public juego:string;
 
   constructor(private route: ActivatedRoute, private registroService: RegistroService, private userService:UsersService) { 
     this.showSpinner = true;
@@ -28,29 +28,39 @@ export class ResultadosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id.subscribe((id)=>{
-      console.log(id);
-      this.setJuego(id);
+    this.id.subscribe((id)=>{   
+      this.setJuego(id);         
       this.getRegistros(id,this.userEmail);
     });
   }  
   setJuego(id:number){
 
-    switch(id){
-      case 1:
-        this.juego = "Piedra, Papel o Tijera";
-        break;
-      case 2:
-        this.juego = "Ta-Te-Ti";
-        break;
-      case 3:
-        this.juego = "Memotest";
-        break;
-      case 4:
-        this.juego = "Juego Propio";
-        break;
+    if(id == 1){
+      this.juego = "Piedra, Papel o Tijera";
     }
-    console.log("id: "+ id + " juego: "+ this.juego);
+    else if(id == 2){
+      this.juego = "Ta-Te-Ti";
+    }
+    else if(id == 3){
+      this.juego = "Memotest";
+    }
+    else if(id == 4){
+      this.juego = "Juego Propio";
+    }
+    // switch(id){
+    //   case 1:
+    //     this.juego = "Piedra, Papel o Tijera";
+    //     break;
+    //   case 2:
+    //     this.juego = "Ta-Te-Ti";
+    //     break;
+    //   case 3:
+    //     this.juego = "Memotest";
+    //     break;
+    //   case 4:
+    //     this.juego = "Juego Propio";
+    //     break;
+    // }    
   }
 
   getRegistros(juegoId:number, email:string){
@@ -58,7 +68,7 @@ export class ResultadosComponent implements OnInit {
       this.registros = items.filter((value)=>{
         return value.juegoId == juegoId;
       });
-      this.showSpinner = false;
+      this.showSpinner = false;      
     });
   }
 

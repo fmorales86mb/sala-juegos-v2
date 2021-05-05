@@ -1,25 +1,45 @@
 <div class="page mb-5">
-    <app-header></app-header>
+  <app-header></app-header>
     
     <div class="container">
-        <div class="p-4 p-md-5 mb-5 text-white rounded bg-secondary">
-            <div class="row">
-                <div class="col-md-6 px-0">
-                    <h1 class="display-4 fst-italic">Quién Soy</h1>
-                    <p class="lead my-3">Hola, me llamo Federico Morales, tengo 32 años. Vivo en Quilmes con mi pareja y mi hijo Miguel de un año.</p>
-                  </div>
-                  <div class="col-md-3">
-       
-                </div>
-                  <div class="col-md-3">
-                      <img [src]="perfil" height="200" width="180">
-                  </div>
+      <div class="p-4 p-md-5 mb-5 text-white rounded bg-secondary">
+          <div class="row">
+
+            <div class="col-md-6 px-0">
+              <h1 class="display-4 fst-italic">Quién Soy</h1>
+              <p class="lead my-3">Hola, me llamo Federico Morales, tengo 32 años. Vivo en Quilmes con mi pareja y mi hijo Miguel de un año.</p>
+            </div>
+
+            <div class="col-md-3">              
+            </div>
+
+            <div class="col-md-3">
+              <img class="rounded" [src]="perfil" height="200" width="180">
             </div>
 
           </div>
+        </div>
+        <div class="p-4 p-md-5 mb-5 text-white rounded bg-secondary">
+          <div class="row">
+
+            <div class="col-md-6 px-0">
+              <h1 class="display-4 fst-italic">Quema Coco</h1>
+              <p class="lead my-3">El juego consiste en resolver rápidamente la suma presentadas. Tenés 3 segundos para calcularla, sino perdiste</p>
+              <p class="lead mb-0"><a class="nav-link text-white fw-bold" [routerLink]="" (click)="goToJuegoPropio()">Comenzar a Jugar!</a></p>
+            </div>
+
+            <div class="col-md-3">              
+            </div>
+
+            <div class="col-md-3">
+              <img class="rounded" [src]="srcJuegoPropio" height="200" width="180">
+            </div>
+            
+          </div>
+        </div>
     </div>
 
-    <app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
 
 

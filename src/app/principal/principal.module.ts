@@ -15,6 +15,7 @@ import { EncuestaComponent } from './pages/encuesta/encuesta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResultadosComponent } from './pages/resultados/resultados.component';
 import { SharedModule } from '../shared/shared.module';
+import { JuegoPropioComponent } from './pages/juego-propio/juego-propio.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     TatetiComponent,
     MemotestComponent,
     EncuestaComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    JuegoPropioComponent
   ],
   imports: [
     ChatModule,

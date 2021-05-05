@@ -32,9 +32,9 @@ export class HomeComponent implements OnInit {
     this.dataMemotest.title = "Memotest";
 
     this.dataJuegoPropio = new CardDto();
-    this.dataJuegoPropio.href = "";
-    this.dataJuegoPropio.img = "";
-    this.dataJuegoPropio.title = "Juego Propio";
+    this.dataJuegoPropio.href = "quema-coco";
+    this.dataJuegoPropio.img = "quema-coco-logo.jpg";
+    this.dataJuegoPropio.title = "Quema Coco";
    }
 
   clickIngresar(){
