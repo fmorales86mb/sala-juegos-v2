@@ -6,6 +6,7 @@ import { ErrorHandleFirebase } from '../models/errors-handle';
 import { Credential } from '../models/credential';
 import { RegisterCredential } from '../models/register-credential';
 import { ResponseFirebase } from '../models/response-firebase';
+import { LogService } from './log.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class AuthService {
       
   private isAuth:boolean = false;
 
-  constructor(private authDb: AngularFireAuth) {      
-
+  constructor(private authDb: AngularFireAuth, private logService:LogService) {      
+    this.logService.setCollection("logIngreso");
   }
 
   public async Ingresar(loginData: Credential): Promise<ResponseFirebase>{  
@@ -26,6 +27,7 @@ export class AuthService {
     .then((userCredential) => {                 
       this.isAuth = true;
       response.ok = true;
+      this.logIngreso(loginData.GetEmail());
     })
     .catch((error) => {
       this.isAuth = false;
@@ -44,6 +46,7 @@ export class AuthService {
       .then((userCredential) => {
         this.isAuth = true;
         response.ok = true;
+        this.logIngreso(registerData.GetEmail());
       })
       .catch((error) => {
         this.isAuth = false;
@@ -62,5 +65,14 @@ export class AuthService {
 
   public GetIsAuth():boolean{    
     return this.isAuth;
+  }
+
+  private logIngreso(email:string){
+    let log = {
+      email: email,
+      fecha: Date.now().toLocaleString()
+    };
+
+    this.logService.addItem(log);
   }
 }
