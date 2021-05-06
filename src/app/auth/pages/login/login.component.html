@@ -3,8 +3,17 @@
       
       <h1 class="h3 mb-3 fw-normal text-center">Bienvenid@</h1>
   
+      <div class="row text-center mb-3">
+        <div class="col">
+          <button class="w-100 btn btn-secondary" type="button" (click)="cargarUsuario(1)" [disabled]="showSpinner">Usuario 1</button>
+        </div>
+        <div class="col">
+          <button class=" w-100 btn btn-secondary" type="button" (click)="cargarUsuario(2)" [disabled]="showSpinner">Usuario 2</button>
+        </div>
+      </div>      
+
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="emailCtrl">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="credential.email" formControlName="emailCtrl">
         <label for="floatingInput">Email</label>
         <div class="errors">
           <small class="invalid" *ngIf="getEmailCtrl()?.errors?.required && getEmailCtrl()?.touched">Campo obligatorio</small>
@@ -13,7 +22,7 @@
         
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" formControlName="passCtrl">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" [(ngModel)]="credential.pass" formControlName="passCtrl">
         <label for="floatingPassword">Contraseña</label>
       </div>
       <div class="errors">

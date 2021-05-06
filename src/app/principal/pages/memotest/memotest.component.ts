@@ -34,12 +34,13 @@ export class MemotestComponent implements OnInit {
     this.juegoIniciado = false;
 
     this.celdaCubierta = this.baseSrc + "memotest-celda.jpg";
-    if(this.userService.currentUser){
-      this.userName = this.userService.currentUser.name;
-    }
-    else{
-      this.userName = "Test";
-    }
+    this.userName = this.userService.currentUser.name;
+    // if(this.userService.currentUser){
+    //   this.userName = this.userService.currentUser.name;
+    // }
+    // else{
+    //   this.userName = "Test";
+    // }
   }
 
   ngOnInit(): void {
@@ -51,7 +52,8 @@ export class MemotestComponent implements OnInit {
 
     this.registroJuego.juego = "Memotest";
     this.registroJuego.juegoId = 3;
-    this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    //this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    this.registroJuego.userEmail = this.userService.currentUser.email;
     this.registroJuego.userName = this.userName;
 
     this.registroService.setCollection("registro-" + this.registroJuego.userEmail);

@@ -33,16 +33,18 @@ export class PiedraPapelTijeraComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.userService.currentUser){
-      this.userName = this.userService.currentUser.name;
-    }
-    else{
-      this.userName = "Test";
-    }
+    // if(this.userService.currentUser){
+    //   this.userName = this.userService.currentUser.name;
+    // }
+    // else{
+    //   this.userName = "Test";
+    // }
 
+    this.userName = this.userService.currentUser.name;
     this.registroJuego.juego = "Piedra, Papel o Tijera";
     this.registroJuego.juegoId = 1;
-    this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    //this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    this.registroJuego.userEmail = this.userService.currentUser.email;
     this.registroJuego.userName = this.userName;
 
     this.registroService.setCollection("registro-"+this.registroJuego.userEmail);

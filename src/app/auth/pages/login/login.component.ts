@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router:Router,
     private userService:UsersService) {
+    
     this.showSpinner = false;
     this.hasAlert = false;
     this.alertMessage ="";
@@ -70,6 +71,15 @@ export class LoginComponent implements OnInit {
   getPassCtrl(){return this.loginForm.get("passCtrl");}
 
   goToRegister() {this.router.navigate(['register']); }
+
+  cargarUsuario(id:number){
+    if(id == 1){
+      this.credential = new Credential("usuario1@email.com", "pas123");
+    }
+    else if(id ==2){
+      this.credential = new Credential("usuario2@email.com", "pas123");
+    }
+  }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

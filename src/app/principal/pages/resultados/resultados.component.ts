@@ -22,7 +22,8 @@ export class ResultadosComponent implements OnInit {
   constructor(private route: ActivatedRoute, private registroService: RegistroService, private userService:UsersService) { 
     this.showSpinner = true;
     this.id = this.route.params.pipe(map(p => p.id));
-    this.userEmail = this.userService.currentUser?this.userService.currentUser.email:"test@email.com";
+    //this.userEmail = this.userService.currentUser?this.userService.currentUser.email:"test@email.com";
+    this.userEmail = this.userService.currentUser.email;
     this.registroService.setCollection("registro-"+this.userEmail);
     this.juego = "";
   }
@@ -45,7 +46,7 @@ export class ResultadosComponent implements OnInit {
       this.juego = "Memotest";
     }
     else if(id == 4){
-      this.juego = "Juego Propio";
+      this.juego = "Quema Coco";
     }
     // switch(id){
     //   case 1:

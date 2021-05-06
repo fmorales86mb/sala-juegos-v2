@@ -35,16 +35,18 @@ export class JuegoPropioComponent implements OnInit {
   }
 
   ngOnInit(): void {  
-    if(this.userService.currentUser){
-      this.userName = this.userService.currentUser.name;
-    }
-    else{
-      this.userName = "Test";
-    }
+    // if(this.userService.currentUser){
+    //   this.userName = this.userService.currentUser.name;
+    // }
+    // else{
+    //   this.userName = "Test";
+    // }
+    this.userName = this.userService.currentUser.name;
 
     this.registroJuego.juego = "Quema Coco";
     this.registroJuego.juegoId = 4;
-    this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    //this.registroJuego.userEmail = this.userService.currentUser? this.userService.currentUser.email:"test@email.com";
+    this.registroJuego.userEmail = this.userService.currentUser.email;
     this.registroJuego.userName = this.userName;
 
     this.registroService.setCollection("registro-"+this.registroJuego.userEmail);

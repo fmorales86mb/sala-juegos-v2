@@ -15,12 +15,13 @@ export class HeaderComponent implements OnInit {
   constructor(private autService: AuthService, private router:Router, private userService:UsersService) { }
 
   ngOnInit(): void {
-    if(this.userService.currentUser){
-      this.userName = this.userService.currentUser.name;
-    }
-    else{
-      this.userName = "Test";
-    }
+    this.userName = this.userService.currentUser.name;
+    // if(this.userService.currentUser){
+    //   this.userName = this.userService.currentUser.name;
+    // }
+    // else{
+    //   this.userName = "Test";
+    // }
   }
 
   clickLogout(){

@@ -1,6 +1,6 @@
 export class Credential {
-    private email:string;
-    private pass:string;
+    email:string;
+    pass:string;
 
     constructor(email:string, pass:string){
         this.email = email;

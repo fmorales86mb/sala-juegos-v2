@@ -1,6 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/auth/models/user';
 import { UsersService } from 'src/app/auth/services/users.service';
 import { Message } from '../../models/message';
 import { ChatService } from '../../services/chat.service';
@@ -60,9 +59,7 @@ export class WindowComponent implements OnInit {
 
     this.chatForm = this.fb.group({
       messageCtrl:['', [Validators.required, Validators.maxLength(50)]],      
-    });
-
-    
+    });    
         
     this.scrollToBottom();
   }

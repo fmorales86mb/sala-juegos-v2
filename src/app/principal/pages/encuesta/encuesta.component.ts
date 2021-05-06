@@ -1,4 +1,3 @@
-import { flatten } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/auth/services/users.service';
@@ -30,9 +29,10 @@ export class EncuestaComponent implements OnInit {
     this.games.push("Ta-Te-Ti");
     this.games.push("Piedra, papel o tijera");
     this.games.push("Memotest");
-    this.games.push("Propio");
+    this.games.push("Quema Coco");
     this.range=2;
-    let email = this.userService.currentUser == undefined? "test":this.userService.currentUser.email; 
+    //let email = this.userService.currentUser == undefined? "test":this.userService.currentUser.email; 
+    let email = this.userService.currentUser.email; 
     this.encuestaService.setCollection("encuesta-"+email)
 
     this.encuestaForm = this.bf.group({
